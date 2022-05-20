@@ -10,7 +10,7 @@ body {
 .App, body,html,#root{
   height: 100%;
   background-image: url('../public/background5.jpg');
-  background-size:contain;
+  background-size:cover;
 }
 
 code {
