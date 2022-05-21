@@ -14,3 +14,14 @@
   .cards:hover{
     transform: scale(1.1);
   }
+
+  .cards-no{
+    width: 20%;
+    transition-duration: 0.4s;
+  filter: grayscale(100%);
+  }
+  
+  .cards-no:hover{
+    transform: scale(1.1);
+  filter: grayscale(100%);
+  }

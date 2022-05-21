@@ -10,9 +10,16 @@ export default function Decks(props) {
     const [cards, setCards] = useState([]);
     const [load,SetLoad] = useState(true);
     const card_template = <>
+    <div class="loja-container">
+        <div className="centered">Seu deck de batalha</div>
+        <img className="loja" src="http://image.uc.cn/s/wemedia/s/upload/2021/ba0632b1a5a9c6564ecb34175b59f9bf.png"/>
+      </div>
     <div className="card-container">
     {cards.map((card) => (
-        <img className="cards" src={card.image}/>
+        card.health>4 ? 
+        (<img className="cards" src={card.image}/>)
+        : (<img className="cards-no" src={card.image}/>)
+
     ))}
     </div>
     </>

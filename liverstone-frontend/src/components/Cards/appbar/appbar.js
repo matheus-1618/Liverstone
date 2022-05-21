@@ -11,7 +11,7 @@ export default function Appbar(props) {
     </Link>
     <div className="icon">
         <button className="button">
-            <Link to="/ballondor" className="link">
+            <Link to="/battle" className="link">
                 <span className="appbutton"><GiBattleAxe/>Batalhas </span>
             </Link>
         </button>

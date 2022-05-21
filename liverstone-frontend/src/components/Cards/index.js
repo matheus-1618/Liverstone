@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.css";
 import Appbar from "./appbar/appbar";
-import Load from "./loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
 

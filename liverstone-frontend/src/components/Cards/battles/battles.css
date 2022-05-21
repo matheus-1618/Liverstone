@@ -1,0 +1,106 @@
+.battle-appbutton{
+    font-size:500%;
+    transition-duration: 0.4s;
+    margin: 2px;
+    font-family: 'HortaRegular';
+    -webkit-text-stroke: 1px white;
+  }
+  
+  .battle-appbutton:hover{
+    color: #8652ff;
+  }
+.battle-link{
+    display:flex;
+    justify-content: flex-start;
+    color: #ffc401;
+    outline: none;
+  }
+  
+  .battle-link:link{
+    text-decoration: none;
+    outline: none;
+  }
+
+  .battle-button {
+    background-color: black;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow:visible;
+  }
+  
+  .battle-icon{
+    transition-duration: 0.8s;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+  }
+  
+  .battle-icon:hover{
+    display: flex;
+    color:red;
+    background-color: transparent;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  
+  .battle-button:focus{
+    outline: none;
+  }
+
+.battle{
+    width: 50%;
+}
+
+.battle-cards{
+    width: 20%;
+    transition-duration: 0.4s;
+    transform: scale(1.1);
+  }
+  
+  .battle-letra{
+    margin: 10px;
+    transition-duration: 0.4s;
+    font-size:200%;
+    color:#cccccc;
+    -webkit-text-stroke: 1px black;
+    font-family:fantasy;
+  }
+
+  .battle-letra:hover{
+    transform: scale(1.05);
+    color: #F1CF3B;
+  }
+
+  .battle-cards-no{
+    width: 20%;
+    transition-duration: 0.4s;
+  filter: grayscale(100%);
+  }
+
+  .battle-cards-no:hover{
+    transform: scale(1.1);
+  }
+
+.battle-container {
+  position: relative;
+  text-align: center;
+  color: #F1CF3B;
+  transition-duration: 0.4s;
+}
+
+.battle-container:hover {
+  transform: scale(1.1);
+  color: #8652ff;
+}
+
+.battle-centered {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 35px;
+    -webkit-text-stroke: 1px black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
