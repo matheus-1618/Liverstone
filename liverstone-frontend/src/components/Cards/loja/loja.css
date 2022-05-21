@@ -1,0 +1,61 @@
+.pack-container{
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+  }
+  
+  .loja{
+      width: 50%;
+  }
+
+  .loja-container {
+    position: relative;
+    text-align: center;
+    color: #F1CF3B;
+    transition-duration: 0.4s;
+  }
+
+  .loja-container:hover {
+    transform: scale(1.1);
+    color: #8652ff;
+  }
+
+  .centered {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 70px;
+    
+    -webkit-text-stroke: 2px black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .packs{
+    width: 50%;
+  }
+  
+  .market:hover{
+    transform: scale(1.1);
+    color: red;
+  }
+
+  .market{
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition-duration: 0.4s;
+  }
+
+  .label{
+    font-family: 'HortaRegular';
+    font-size: 40px;
+    align-items: center;
+    color: #ffff;
+    -webkit-text-stroke: 2px #8652ff;
+  }
+
+  

@@ -1,0 +1,16 @@
+.card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .cards{
+    width: 20%;
+    transition-duration: 0.4s;
+  }
+  
+  .cards:hover{
+    transform: scale(1.1);
+  }

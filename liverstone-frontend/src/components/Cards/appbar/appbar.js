@@ -18,15 +18,15 @@ export default function Appbar(props) {
     </div>
     <div className="icon">
         <button className="button">
-        <Link to="/golden" className="link">
+        <Link to="/decks" className="link">
             <span className="appbutton"><GiCardBurn />Deck </span>
         </Link>
         </button>
     </div>
     <div className="icon">
         <button className="button">
-        <Link to="/competitions" className="link">
-            <span className="appbutton"><GiCoins/>Market</span>
+        <Link to="/loja" className="link">
+            <span className="appbutton"><GiCoins/>Loja</span>
         </Link>
         </button>
     </div>
