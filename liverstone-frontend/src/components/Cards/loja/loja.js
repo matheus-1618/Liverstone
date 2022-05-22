@@ -1,7 +1,7 @@
 import React from "react";
 import "./loja.css";
 import Appbar from "../appbar/appbar";
-import {GiRank1,GiRank2,GiRank3} from 'react-icons/gi'
+import {GiRank1,GiRank2,GiRank3,GiShieldBash} from 'react-icons/gi'
 import { useState,useEffect } from "react";
 import axios from "axios";
 
@@ -52,7 +52,13 @@ export default function Loja(props) {
 
   const sorteada_template = (<>
   <Appbar/>
-  <img src={cards.image}/>
+  <h1 className="loja-letra">Nova carta adquirida</h1>
+  <div className="loja-icon">
+        <button onClick={()=>{setShowcard(false)}} className="loja-button">
+                <span className="loja-appbutton"><GiShieldBash/>Continuar</span>
+        </button>
+    </div>
+  <img className="cards" src={cards.image}/>
   </>)
 
   return (

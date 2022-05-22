@@ -1,3 +1,58 @@
+.loja-letra{
+  margin: 10px;
+  transition-duration: 0.4s;
+  font-size:300%;
+  color:#F1CF3B;
+  -webkit-text-stroke: 1px black;
+  font-family:fantasy;
+}
+
+.loja-letra:hover{
+  transform: scale(1.05);
+  color: #F1CF3B;
+}
+
+.loja-appbutton{
+  font-size:500%;
+  transition-duration: 0.4s;
+  margin: 2px;
+  font-family: 'HortaRegular';
+  color: #F1CF3B;
+  /* -webkit-text-stroke: 1px white; */
+}
+
+.loja-appbutton:hover{
+  color: #8652ff;
+}
+
+.loja-button {
+  background-color: black;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow:visible;
+}
+
+.loja-icon{
+  transition-duration: 0.8s;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.loja-icon:hover{
+  display: flex;
+  color:red;
+  background-color: transparent;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.loja-button:focus{
+  outline: none;
+}
+
 .pack-oppening{
   width: 100%;
 }
