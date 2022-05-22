@@ -1,32 +1,31 @@
 import React from "react";
-import "./decks.css";
+import "./battleground.css";
+import { useParams } from "react-router-dom";
 import Appbar from "../appbar/appbar";
 import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
 
-export default function Decks(props) {
+export default function Battleground(props) {
     const [cards, setCards] = useState([]);
     const [load,SetLoad] = useState(true);
-    const card_template = <>
-    <div className="loja-container">
-        <div className="centered">Seu deck de batalha</div>
-        <img className="loja" src="http://image.uc.cn/s/wemedia/s/upload/2021/ba0632b1a5a9c6564ecb34175b59f9bf.png"/>
-      </div>
-    <div className="card-container">
-    {cards.map((card) => (
-        card.health>4 ? 
-        (<img className="cards" src={card.image}/>)
-        : (<img className="cards-no" src={card.image}/>)
-    ))}
-    </div>
-    </>
+    let { ids } = useParams();
+    let cardsId = ids.split("&")
     useEffect(() => {
         axios
           .get("http://localhost:8000/all")
           .then((res) => {setCards(res.data);SetLoad(false)});
       }, []);
+    const card_template = <>
+    <div className="card-container">
+    {cards.map((card) => (
+        cardsId.includes(card.id.toString()) ? 
+        (<img className="cards" src={card.image}/>)
+        : (<noscript></noscript>)
+    ))}
+    </div>
+    </>
   return (
     <main className="App">
       <Appbar/>

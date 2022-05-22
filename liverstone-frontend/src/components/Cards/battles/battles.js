@@ -7,12 +7,10 @@ import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
-
 export default function Battle(props) {
     const [cards, setCards] = useState([]);
     const [load,SetLoad] = useState(true);
     const [selectedCards, setSelectedCards] = useState([]);
-    
     function selectCard(id){
         if (selectedCards.length==3){
             setSelectedCards(selectedCards.slice(1))
@@ -35,7 +33,7 @@ export default function Battle(props) {
     {selectedCards.length==3 ? 
     (<div className="battle-icon">
         <button className="battle-button">
-            <Link to="/battle" className="battle-link">
+            <Link to={`/battle/${selectedCards.join("&")}`} className="battle-link">
                 <span className="battle-appbutton"><GiRelicBlade/>Batalhar</span>
             </Link>
         </button>

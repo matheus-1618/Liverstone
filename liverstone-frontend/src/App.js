@@ -5,8 +5,7 @@ import Home from "./components/Cards";
 import Loja from "./components/Cards/loja/loja";
 import Decks from "./components/Cards/decks/decks";
 import Battle from "./components/Cards/battles/battles";
-
-
+import Battleground from "./components/Cards/battleground/battleground";
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
         <Route path="/loja" element={<Loja/>}/>
         <Route path="/decks" element={<Decks/>}/>
         <Route path="/battle" element={<Battle/>}/>
+        <Route path="/battle/:ids" element={<Battleground/>}/>
       </Routes>
     </BrowserRouter>
     
