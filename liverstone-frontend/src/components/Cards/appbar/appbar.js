@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { GiSoccerKick,GiRank3,GiBattleAxe,GiCoins,GiCardBurn } from 'react-icons/gi';
+import {BiLogOut} from 'react-icons/bi';
 import "./appbar.css";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
+import UserInfo from "../userInfo";
 
 export default function Appbar(props) {
+  const { user, logoutUser } = useContext(AuthContext);
   return (
     <div className="appbar">
     <Link to="/" className="link">
@@ -37,6 +42,8 @@ export default function Appbar(props) {
         </Link>
         </button>
     </div>
+    
+    <button onClick={logoutUser}>Logout</button>
   </div>
   );
 }
