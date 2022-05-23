@@ -1,0 +1,29 @@
+.login{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-letra{
+    margin: 10px;
+    transition-duration: 0.4s;
+    font-size:500%;
+    color:#F1CF3B;
+    -webkit-text-stroke: 1px black;
+    font-family:fantasy;
+  }
+  
+  .login-letra:hover{
+    transform: scale(1.05);
+    color: purple;
+  }
+
+.App-login{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://i.ytimg.com/vi/SCq4WmfRPyg/maxresdefault.jpg');
+    background-size:cover;
+  }
