@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("authTokens", JSON.stringify(data));
       history("/");
     } else {
-      alert("Something went wrong!");
+      alert("Erro de autenticação");
     }
   };
   
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
     if (response.status === 201) {
       history("/login");
     } else {
-      alert("Something went wrong!");
+      alert("Errro de autenticação");
     }
   };
 

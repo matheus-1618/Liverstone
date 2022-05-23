@@ -1,5 +1,8 @@
 import { useState, useContext } from "react";
 import AuthContext from "../context/AuthContext";
+import {RiLockPasswordFill,RiUserFill} from 'react-icons/ri';
+import {GiArchiveRegister} from 'react-icons/gi';
+import './loginPage.css'
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -13,44 +16,48 @@ function Register() {
   };
 
   return (
-    <section>
+    <main className="App-login">
       <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <hr />
-        <div>
-          <label htmlFor="username">Username</label>
+        <div className="login">
+        <img className="login-image" src="Liverstone.png"/>
+        <div className="form-card">
+        <h1><RiUserFill/></h1>
           <input
+            className="form-card-title"
             type="text"
             id="username"
             onChange={e => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="Nome de usuário"
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className="form-card">
+        <h1><RiLockPasswordFill/></h1>
           <input
+            className="form-card-title"
             type="password"
             id="password"
             onChange={e => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Senha"
             required
           />
         </div>
-        <div>
-          <label htmlFor="confirm-password">Confirm Password</label>
+        <div className="form-card">
+          <h1><RiLockPasswordFill/></h1>
           <input
+            className="form-card-title"
             type="password"
             id="confirm-password"
             onChange={e => setPassword2(e.target.value)}
-            placeholder="Confirm Password"
+            placeholder="Confirme a senha"
             required
           />
-          <p>{password2 !== password ? "Passwords do not match" : ""}</p>
+          <p>{password2 !== password ? "Senhas não coincidem" : ""}</p>
         </div>
-        <button>Register</button>
+        <button className="login-button"><GiArchiveRegister/> Registrar</button>
+        </div>
       </form>
-    </section>
+      </main>
   );
 }
 

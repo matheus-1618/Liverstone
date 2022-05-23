@@ -5,7 +5,6 @@ import {BiLogOut} from 'react-icons/bi';
 import "./appbar.css";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
-import UserInfo from "../userInfo";
 
 export default function Appbar(props) {
   const { user, logoutUser } = useContext(AuthContext);

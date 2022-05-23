@@ -1,9 +1,16 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+import {RiLockPasswordFill,RiUserFill,RiLoginCircleFill} from 'react-icons/ri';
+import {MdFiberNew} from 'react-icons/md'
 import AuthContext from "../context/AuthContext";
 import './loginPage.css'
 
 const LoginPage = () => {
+  // const navigate = Navigate();
   const { loginUser } = useContext(AuthContext);
+  // function goRegister(){
+  //   navigate('/register');
+  // }
   const handleSubmit = e => {
     e.preventDefault();
     const username = e.target.username.value;
@@ -14,17 +21,22 @@ const LoginPage = () => {
   return (
     <main className="App-login">
       <form onSubmit={handleSubmit}>
-     
         <div className="login">
-        <div className="battle-container">
-        <div className="battle-centered">Liverstone</div>
-        <img className="battle" src="loadspinner.gif"/>
+        <img className="login-image" src="Liverstone.png"/>
+        <div className="form-card">
+          <h1><RiUserFill/></h1>
+          <input  required className="form-card-title"  type="text" id="username" placeholder="Nome de usuário" />
         </div>
-        <label htmlFor="username">Nome de usuário</label>
-        <input type="text" id="username" placeholder="Digite aqui" />
-        <label htmlFor="password">Senha</label>
-        <input type="password" id="password" placeholder="Digite a senha" />
-        <button  type="submit">Login</button>
+        <div className="form-card">
+          <h1><RiLockPasswordFill/></h1>
+          <input required className="form-card-title" type="password" id="password" placeholder="Senha" />
+        </div>
+        <div className="login-buttons">
+          <button className="login-button" type="submit"><RiLoginCircleFill/> Login</button>
+          <Link to='/register'>
+            <button  className="login-button" ><MdFiberNew/> Registrar-se</button>
+          </Link>
+        </div>
         </div>
       </form>
       </main>

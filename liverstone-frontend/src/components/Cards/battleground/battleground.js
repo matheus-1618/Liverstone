@@ -26,24 +26,26 @@ export default function Battleground(props) {
       }, []);
       
     const card_template = <>
-          <div className="card-container">
+          <h1 className="battlegroud-letra">Hora de batalhar</h1>
+          <div className="battleground-card-container">
           {cards.map((card) => (
               card.id<4 ? 
-              (<img className="cards" src={card.image}/>)
+              (<img className="battleground-card-enemy" src={card.image}/>)
               : (<noscript></noscript>)
           ))}
           </div>
-          <div className="card-container">
+          <h1 className="battlegroud-letra">Vs</h1>
+          <div className="battleground-card-container">
           {cards.map((card) => (
               cardsId.includes(card.id.toString()) ? 
-              (<img className="cards" src={card.image}/>)
+              (<img className="battleground-card-user" src={card.image}/>)
               : (<noscript></noscript>)
           ))}
           </div>
           </>
 
   return (
-    <main className="App">
+    <main className="App-battleground">
       {gif ? <img className="battleground" src="../../../battle.gif"/> :(load ? (<Load/>) : card_template)}
     </main>
   );

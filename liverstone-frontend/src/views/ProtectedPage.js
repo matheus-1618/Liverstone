@@ -12,7 +12,7 @@ function ProtectedPage() {
         setRes(response.data.response);
       } catch {
         console.error();
-        setRes("Something went wrong");
+        setRes("Erro de autenticaçãp");
       }
     };
     fetchData();
