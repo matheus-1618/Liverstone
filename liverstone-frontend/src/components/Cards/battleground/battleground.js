@@ -62,23 +62,27 @@ export default function Battleground(props) {
     }
 
     function bot(){
-      sleep(4000)
+      setTimeout(() => {
+        setTexto("Turno de ataque do adversário")
+      }, 1000);
       setTimeout(() => {
         let random = enemies[Math.floor(Math.random()*enemies.length)];
-        setTexto(random.name)
         setEnemyCard([random.id])
-      }, 1000);
+      }, 2000);
       setTimeout(() => {
         let random1 = cards[Math.floor(Math.random()*cards.length)];
         setUserCard([random1.id])
-        setTexto(random1.name)
-      }, 2000);
+        
+      }, 3000);
       setenemyTurn(false);
       setuserTurn(false);
-      sleep(3000)
+      sleep(4000);
+      setTimeout(() => {
+        setTexto("Seu turno de ataque")
+      }, 5000);
     }
 
-    useEffect(()=>  {if (enemyTurn && UserTurn){sleep(500);bot()}})
+    useEffect(()=>  {if (enemyTurn && UserTurn){sleep(1000);bot()}})
 
     useEffect(() => {
         axios
