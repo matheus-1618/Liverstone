@@ -23,26 +23,30 @@
     justify-content: space-around;
     flex-wrap: wrap;
   }
-  
-  .battleground-card-enemy{
+
+  .battleground-card{
     width: 12%;
-    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
   }
   
-  .battleground-card-enemy:hover{
+  .battleground-card:hover{
     transform: scale(1.1);
+  }
+  
+  .battleground-card-enemy{
+    width: 12%;
+    transform: scale(1.1);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    transition-duration: 0.4s;
   }
 
   .battleground-card-user{
     width: 12%;
+    transform: scale(1.1);
     filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(215deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
   }
   
-  .battleground-card-user:hover{
-    transform: scale(1.1);
-  }
 
 .App-battleground{
     display: flex;

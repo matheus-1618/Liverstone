@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { GiSoccerKick,GiRank3,GiBattleAxe,GiCoins,GiCardBurn } from 'react-icons/gi';
+import { GiExitDoor,GiRank3,GiBattleAxe,GiCoins,GiCardBurn,GiBattleGear } from 'react-icons/gi';
 import {BiLogOut} from 'react-icons/bi';
 import "./appbar.css";
 import { useContext } from "react";
@@ -13,6 +13,16 @@ export default function Appbar(props) {
     <Link to="/" className="link">
         <img src="/Liverstpne.gif" />
     </Link>
+
+    {user && <div className="icon">
+        <button className="button">
+            <Link to="/" className="link">
+                <span className="appbutton"><GiBattleGear/>{user.username.substring(0,10)} </span>
+            </Link>
+        </button>
+    </div>}
+
+    
     <div className="icon">
         <button className="button">
             <Link to="/battle" className="link">
@@ -42,7 +52,14 @@ export default function Appbar(props) {
         </button>
     </div>
     
-    <button onClick={logoutUser}>Logout</button>
+    <div className="icon">
+        <button className="button" onClick={logoutUser}>
+        <Link to="/login" className="link">
+            <span className="appbutton"><GiExitDoor/>Logout </span>
+        </Link>
+        </button>
+    </div>
+    
   </div>
   );
 }
