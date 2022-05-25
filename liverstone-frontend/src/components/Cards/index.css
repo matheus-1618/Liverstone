@@ -7,6 +7,97 @@
   text-align: center;
   flex-grow: 1;
 }
+.hover{
+  transition-duration: 0.8s;
+}
+
+.hover:hover{
+  transform: scale(1.1);
+}
+
+.index{
+  border-radius: 30px;
+}
+
+.index-container-inner{
+  /* position: relative; */
+  text-align: center;
+  color: #F1CF3B;
+  transition-duration: 0.8s;
+  }
+
+.index-inside{
+  position: absolute;
+  -webkit-text-stroke: 2px black;
+  top: 75%;
+  left: 20%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.index-inside2{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  width: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.index-inside3{
+  position: absolute;
+  top: 75%;
+  left: 80%;
+  width: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.index-container {
+  position: relative;
+  text-align: center;
+  color: #F1CF3B;
+  transition-duration: 0.8s;
+}
+
+.index-container:hover {
+color: #8652ff;
+}
+
+.index-center {
+  position: absolute;
+  font-family: 'HortaRegular';
+  font-size: 70px;
+  -webkit-text-stroke: 2px black;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.index-center1 {
+  position: absolute;
+  font-family: 'HortaRegular';
+  font-size: 50px;
+  -webkit-text-stroke: 2px black;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+.index-center2 {
+  position: absolute;
+  font-family: 'HortaRegular';
+  font-size: 50px;
+  -webkit-text-stroke: 2px black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.index-center3 {
+  position: absolute;
+  font-family: 'HortaRegular';
+  font-size: 50px;
+  -webkit-text-stroke: 2px black;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
 
 .statics{
   display: flex;

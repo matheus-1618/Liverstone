@@ -48,7 +48,7 @@ export default function Battle(props) {
     </>
     useEffect(() => {
         axios
-          .get("http://localhost:8000/attack12")
+          .get("http://localhost:8000/attack2")
           .then((res) => {setCards(res.data);SetLoad(false)});
       }, []);
   return (

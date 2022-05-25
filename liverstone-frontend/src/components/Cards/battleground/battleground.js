@@ -44,8 +44,8 @@ export default function Battleground(props) {
         card.health =  card.health -  userAttack;
         if (card.health<1){
           setTimeout(() => {
-          setEnemies(enemies.filter(e=>e!==card));
-        }, 1000);
+            setEnemies(enemies.filter(e=>e!==card));
+          }, 500);
         }
       }
   }
@@ -84,7 +84,9 @@ export default function Battleground(props) {
         let indexCard = cards.indexOf(randomCard);
         cards[indexCard].health =  cards[indexCard].health -  enemies[indexEnemy].attack;
         if (cards[indexCard].health<1){
-          setCards(cards.filter(e=>e!==cards[indexCard]));
+          setTimeout(() => {
+            setCards(cards.filter(e=>e!==cards[indexCard]));
+          }, 300);
         }
       }, 3000);
       setenemyTurn(false);
@@ -112,7 +114,7 @@ export default function Battleground(props) {
           .then((res) => {setEnemies(res.data);SetLoad(false)});
       }, []);
 
-    useEffect(()=>  {if (!load && enemies.length === 0){setTexto("Final de jogo")}});
+    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setTexto("Final de jogo")}});
 
     const card_template = <>
           <h1 className="battlegroud-letra">{texto}</h1>
@@ -127,7 +129,7 @@ export default function Battleground(props) {
 
           <div className="battleground-card-container">
           {cards.map((card) => (
-            userCard[0]!==card.id ? (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card);setuserTurn(true)}} className="battleground-card" src={card.image}/></div></>) : 
+            userCard[0]!==card.id ? (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) : 
             (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card.id)}} className="battleground-card-user" src={card.image}/></div></>)
           ))}
           </div>

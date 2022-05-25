@@ -14,28 +14,20 @@ export default function Home(props) {
     <main className="App">
       <Appbar/>
       {user ? 
-      (<div class="loja-container">
-        {user && <div className="centered">Bem vindo de volta, {user.username}</div>}
-        <img className="loja" src="https://static.inews24.com/v1/a271051a647932.gif"/>
+      (<div class="index-container">
+        {user && <div className="index-center">{user.username}'s stats</div>}
+        <img className="index" src="https://static.inews24.com/v1/a271051a647932.gif"/>
+        <div className="statics">
+            <div className="index-center1">Vitórias</div>
+            <div className="index-center2">Cartas</div>
+            <div className="index-center3">Derrotas</div>
+            <img className="index-inside" src="https://www.downloadclipart.net/large/hearthstone-transparent-background.png"/>
+            <img className="index-inside2" src="https://static1.millenium.org/articles/7/36/97/87/@/1398196-bundle1-article_m-1.png"/>
+            <img className="index-inside3" src="https://d2q63o9r0h0ohi.cloudfront.net/images/journey-to-ungoro/cards-9cf49c3bd21287f861d130134f8d00c48647b8c34c5c0df35f32f42427b8a0c2862c49cec3ab870e328beb25a08d8c470a938e765c2258a8fc7100adbfd33ad7.png"/>  
+        </div>
       </div>) : (<Navigate to="/login"/>)}
 
-      <div className="statics">
-      <div class="loja-container">
-        <div className="centered">180/201 cartas</div>
-        <img className="loja" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/Z5ZPAV3IV89A1548356968146.gif"/>
-      </div>
-
-      <div class="loja-container">
-        <div className="centered">34 vitórias</div>
-        <img className="loja" src="https://media-hearth.cursecdn.com/attachments/19/183/cardback_33.gif"/>
-      </div>
-
-      <div class="loja-container">
-        <div className="centered">6 derrotas</div>
-        <img className="loja" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/44NC36C38EP21564589750080.gif"/>
-      </div>
-
-      </div>
+    
     </main>
   );
 }
