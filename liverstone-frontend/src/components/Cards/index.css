@@ -16,6 +16,7 @@
 }
 
 .index{
+  top: 20%;
   border-radius: 30px;
 }
 
@@ -52,6 +53,7 @@
 }
 
 .index-container {
+  display: flex;
   position: relative;
   text-align: center;
   color: #F1CF3B;
@@ -66,6 +68,9 @@ color: #8652ff;
   position: absolute;
   font-family: 'HortaRegular';
   font-size: 70px;
+  background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 2px black;
   top: 20%;
   left: 50%;

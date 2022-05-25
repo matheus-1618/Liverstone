@@ -2,11 +2,48 @@
     width: 100%;
 }
 
+.alinhamentos{
+  display: flex;
+  align-items: center;
+  flex-direction: center;
+  flex-direction: column;
+}
+.final-letra-vitoria {
+  transition-duration: 0.9s;
+  font-family: 'HortaRegular';
+  font-size: 200px;
+  background: -webkit-linear-gradient(#f5af19, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px black;
+}
+
+.final-letra-vitoria:hover {
+transform: scale(1.1);
+}
+
+.final-letra-derrota {
+  transition-duration: 0.9s;
+  font-family: 'HortaRegular';
+  font-size: 200px;
+  background: -webkit-linear-gradient(#f5af19, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px black;
+}
+
+.final-letra-derrota:hover {
+transform: scale(1.1);
+}
+
 .battlegroud-letra{
     margin: 10px;
     transition-duration: 0.4s;
     font-size:350%;
-    color:red;
+    background: -webkit-linear-gradient(blue, #f5af19);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* color:#F1CF3B; */
     -webkit-text-stroke: 2px black;
     font-family: 'HortaRegular';
   }
@@ -27,6 +64,9 @@
   .ground-container {
     position: relative;
     transition-duration: 0.4s;
+  }
+  .ground-container:hover {
+    transform: scale(1.1);
   }
   
   .bottomright {
@@ -51,15 +91,16 @@
     transition-duration: 0.4s;
   }
   
-  .battleground-card:hover{
+  .ground-container-selected {
     transform: scale(1.1);
+    transition-duration: 0.4s;
   }
-  
+
   .battleground-card-enemy{
     width: 140px;
     margin-left: 50px;
     margin-right: 50px;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
   }
@@ -68,12 +109,11 @@
     width: 140px;
     margin-left: 50px;
     margin-right: 50px;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
     filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(215deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
   }
   
-
 .App-battleground{
     display: flex;
     flex-direction: column;

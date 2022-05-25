@@ -98,7 +98,10 @@
 .battle-centered {
     position: absolute;
     font-family: 'HortaRegular';
-    font-size: 35px;
+    font-size: 45px;
+      background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px black;
     top: 50%;
     left: 50%;

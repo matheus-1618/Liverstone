@@ -1,11 +1,13 @@
 import React from "react";
 import "./battleground.css";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
 export default function Battleground(props) {
+    const [game,setGame] = useState(true);
     const [cards, setCards] = useState([]);
     const [enemies, setEnemies] = useState([]);
     const [userCard, setUserCard] = useState([]);
@@ -15,6 +17,7 @@ export default function Battleground(props) {
     const [load,SetLoad] = useState(true);
     const [enemyTurn,setenemyTurn] = useState(false);
     const [UserTurn,setuserTurn] = useState(false);
+    const [attack,setAttack] = useState(false);
     const [gif,setGif] = useState(true);
     let { ids } = useParams();
     let cardsId = ids.split("&")
@@ -27,19 +30,25 @@ export default function Battleground(props) {
         setUserCard([])
     }
       else{
+        setAttack(true);
         setUserCard(userCard => [...userCard, card.id])
         setUserAttack(card.attack);
       }
   }
 
   function selectEnemy(card){
-    if (enemyCard.length>0){
+    if (!attack){
+      setEnemyCard([]);
+      setTexto("Selecione primeiro uma carta sua!")
+    }
+    else if (enemyCard.length>0){
       setEnemyCard(enemyCard.slice(1))
     }
-    if (enemyCard.includes(card.id)){
+    else if (enemyCard.includes(card.id)){
       setEnemyCard([]);
     }
       else{
+        setAttack(false);
         setEnemyCard(enemyCard => [...enemyCard, card.id]);
         card.health =  card.health -  userAttack;
         if (card.health<1){
@@ -96,9 +105,6 @@ export default function Battleground(props) {
         setTexto("Seu turno de ataque")
       }, 5000);
     }
-    function getAttack(card){
-
-    }
  
     useEffect(()=>  {if (enemyTurn && UserTurn){sleep(1000);bot()}});
 
@@ -114,14 +120,29 @@ export default function Battleground(props) {
           .then((res) => {setEnemies(res.data);SetLoad(false)});
       }, []);
 
-    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setTexto("Final de jogo")}});
-
+    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false)}else{setGame(true)}});
+    
+    const tela_final = <>
+    <div className="alinhamentos">
+    {enemies.length === 0 ?
+    (<h1 className="final-letra-vitoria">Vitória</h1>):(<h1 className="final-letra-derrota">Derrota</h1>) }
+    <div className="battle-icon">
+        <button className="battle-button">
+            <Link to="/battle/" className="battle-link">
+                <span className="battle-appbutton">Continuar</span>
+            </Link>
+        </button>
+    </div>
+    </div>
+    </>
     const card_template = <>
           <h1 className="battlegroud-letra">{texto}</h1>
           <div className="battleground-card-container">
           {enemies.map((card) => ( 
-            enemyCard[0]!==card.id ? (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card);setenemyTurn(true)}} className="battleground-card" src={card.image}/></div></>) : 
-            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card.id)}} className="battleground-card-enemy" src={card.image}/></div></>) 
+            enemyCard[0]!==card.id? 
+            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card);setenemyTurn(true)}} className="battleground-card" src={card.image}/></div></>)
+            : 
+            (<><div className="ground-container-selected"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card)}} className="battleground-card-enemy" src={card.image}/></div></>) 
           ))}
           </div>
           
@@ -130,14 +151,14 @@ export default function Battleground(props) {
           <div className="battleground-card-container">
           {cards.map((card) => (
             userCard[0]!==card.id ? (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) : 
-            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card.id)}} className="battleground-card-user" src={card.image}/></div></>)
+            (<><div className="ground-container-selected"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card)}} className="battleground-card-user" src={card.image}/></div></>)
           ))}
           </div>
           </>
 
   return (
     <main className="App-battleground">
-      {gif ? <img className="battleground" src="../../../battle.gif"/> :(load ? (<Load/>) : card_template)}
+      {gif ? <img className="battleground" src="../../../battle.gif"/> :(load ? (<Load/>) : (game ? card_template : tela_final))}
     </main>
   );
 }
