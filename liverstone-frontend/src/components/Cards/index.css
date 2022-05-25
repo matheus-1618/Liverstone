@@ -8,6 +8,11 @@
   flex-grow: 1;
 }
 
+.statics{
+  display: flex;
+  flex-direction: row;
+}
+
 .card-container{
   display: flex;
   flex-direction: row;

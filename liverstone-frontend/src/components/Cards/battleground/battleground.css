@@ -24,8 +24,30 @@
     flex-wrap: wrap;
   }
 
+  .ground-container {
+    position: relative;
+    transition-duration: 0.4s;
+  }
+  
+  .bottomright {
+    position: absolute;
+    background-image: linear-gradient(#a40606, #d98324);
+    -webkit-text-stroke: 1px black;
+    color:white;
+    font-family: fantasy;
+    min-width: 20px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    bottom: 7px;
+    right: 62px;
+    font-size: 26px;
+  }
+
   .battleground-card{
-    width: 12%;
+    width: 140px;
+    margin-left: 50px;
+    margin-right: 50px;
     transition-duration: 0.4s;
   }
   
@@ -34,14 +56,18 @@
   }
   
   .battleground-card-enemy{
-    width: 12%;
+    width: 140px;
+    margin-left: 50px;
+    margin-right: 50px;
     transform: scale(1.1);
     filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
   }
 
   .battleground-card-user{
-    width: 12%;
+    width: 140px;
+    margin-left: 50px;
+    margin-right: 50px;
     transform: scale(1.1);
     filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(215deg) saturate(600%) contrast(0.8);
     transition-duration: 0.4s;
