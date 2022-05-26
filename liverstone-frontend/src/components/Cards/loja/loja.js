@@ -3,6 +3,7 @@ import "./loja.css";
 import Appbar from "../appbar/appbar";
 import {GiRank1,GiRank2,GiRank3,GiShieldBash} from 'react-icons/gi'
 import { useState,useEffect } from "react";
+import {FaCoins} from 'react-icons/fa'
 import axios from "axios";
 
 
@@ -35,16 +36,16 @@ export default function Loja(props) {
       </div>
       <div className="pack-container">
         <div onClick={()=>get_card('comum')} className="market">
-            <h1 className="label"><GiRank1/>Comum</h1>
-            <img className="packs" src="../../comum.gif"/>
+            <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 15  <br></br><GiRank1 size={30}/>Comum</h1>
+            <img className="packs1" src="../../comum.gif"/>
         </div>
         <div onClick={()=>get_card('especial')} className="market">
-            <h1 className="label"><GiRank2/>Especial</h1>
-            <img className="packs" src="../../especial.gif"/>
+            <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 40 <br></br><GiRank2 size={30}/>Especial</h1>
+            <img className="packs2" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/RHJJZHT0U2001559355124536.gif"/>
         </div>
         <div onClick={()=>get_card('raro')}  className="market">
-            <h1 className="label"><GiRank3/>Raro</h1>
-            <img className="packs" src="../../raro.gif"/>
+            <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 100 <br></br><GiRank3 size={30}/>Raro</h1>
+            <img className="packs3" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/8W9RXIVQ7C471561590038866.gif"/>
         </div>
       </div></>)
       }

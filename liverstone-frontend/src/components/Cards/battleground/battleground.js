@@ -142,7 +142,7 @@ export default function Battleground(props) {
             enemyCard[0]!==card.id? 
             (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card);setenemyTurn(true)}} className="battleground-card" src={card.image}/></div></>)
             : 
-            (<><div className="ground-container-selected"><div class="bottomright">{card.health}</div><img onClick={()=>{selectEnemy(card)}} className="battleground-card-enemy" src={card.image}/></div></>) 
+            (<><div className="ground-container-selected-enemy"><div class="bottomright-selected">{card.health}</div><img onClick={()=>{selectEnemy(card)}} className="battleground-card-enemy" src={card.image}/></div></>) 
           ))}
           </div>
           
@@ -150,8 +150,10 @@ export default function Battleground(props) {
 
           <div className="battleground-card-container">
           {cards.map((card) => (
-            userCard[0]!==card.id ? (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) : 
-            (<><div className="ground-container-selected"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card)}} className="battleground-card-user" src={card.image}/></div></>)
+            userCard[0]!==card.id ? 
+            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) 
+            : 
+            (<><div className="ground-container-selected-user"><div class="bottomright-selected">{card.health}</div><img onClick={()=>{selectUser(card)}} className="battleground-card-user" src={card.image}/></div></>)
           ))}
           </div>
           </>

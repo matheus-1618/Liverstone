@@ -93,8 +93,14 @@
     transform: translate(-50%, -50%);
   }
   
-  .packs{
+  .packs1{
     width: 50%;
+  }
+  .packs2{
+    width: 47%;
+  }
+  .packs3{
+    width: 49%;
   }
   
   .market:hover{
@@ -114,8 +120,8 @@
     font-family: 'HortaRegular';
     font-size: 40px;
     align-items: center;
-    color: #ffff;
-    -webkit-text-stroke: 2px #8652ff;
+    color: #f5af19;
+    -webkit-text-stroke: 2px black;
   }
 
   

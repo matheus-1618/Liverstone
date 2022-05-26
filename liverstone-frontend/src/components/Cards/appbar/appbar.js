@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { GiExitDoor,GiRank3,GiBattleAxe,GiCoins,GiCardBurn,GiBattleGear } from 'react-icons/gi';
+import {FaCoins} from 'react-icons/fa'
 import {BiLogOut} from 'react-icons/bi';
 import "./appbar.css";
 import { useContext } from "react";
@@ -13,6 +14,10 @@ export default function Appbar(props) {
     <Link to="/" className="link">
         <img src="/Liverstpne.gif" />
     </Link>
+
+    <a className="coins-bar">
+        <h1 className="coins"><FaCoins/> 17</h1>
+    </a>
 
     {user && <div className="icon">
         <button className="button">
@@ -46,7 +51,7 @@ export default function Appbar(props) {
     </div>
     <div className="icon">
         <button className="button">
-        <Link to="/clubs" className="link">
+        <Link to="/ranking" className="link">
             <span className="appbutton"><GiRank3/>Ranking </span>
         </Link>
         </button>

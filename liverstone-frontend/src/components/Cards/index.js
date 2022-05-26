@@ -26,8 +26,6 @@ export default function Home(props) {
             <img className="index-inside3" src="https://d2q63o9r0h0ohi.cloudfront.net/images/journey-to-ungoro/cards-9cf49c3bd21287f861d130134f8d00c48647b8c34c5c0df35f32f42427b8a0c2862c49cec3ab870e328beb25a08d8c470a938e765c2258a8fc7100adbfd33ad7.png"/>  
         </div>
       </div>) : (<Navigate to="/login"/>)}
-
-    
     </main>
   );
 }

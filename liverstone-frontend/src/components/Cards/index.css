@@ -16,7 +16,7 @@
 }
 
 .index{
-  top: 20%;
+  height: 90%;
   border-radius: 30px;
 }
 
@@ -54,6 +54,8 @@
 
 .index-container {
   display: flex;
+  height: 100%;
+  align-items: center;
   position: relative;
   text-align: center;
   color: #F1CF3B;

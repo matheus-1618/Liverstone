@@ -11,6 +11,7 @@ import Loja from "./components/Cards/loja/loja";
 import Decks from "./components/Cards/decks/decks";
 import Battle from "./components/Cards/battles/battles";
 import Battleground from "./components/Cards/battleground/battleground";
+import Ranking from "./components/Cards/ranking/ranking";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/decks" element={<Decks/>}/>
         <Route path="/battle" element={<Battle/>}/>
         <Route path="/battle/:ids" element={<Battleground/>}/>
+        <Route path="/ranking" element={<Ranking/>}/>
       </Routes>
       </AuthProvider>
     </BrowserRouter>
