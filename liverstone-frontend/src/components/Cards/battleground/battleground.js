@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 
 export default function Battleground(props) {
+    const { user, logoutUser } = useContext(AuthContext);
     const [game,setGame] = useState(true);
     const [cards, setCards] = useState([]);
     const [enemies, setEnemies] = useState([]);
@@ -110,7 +113,7 @@ export default function Battleground(props) {
 
     useEffect(() => {
         axios
-          .get("http://localhost:8000/all")
+          .get(`http://localhost:8000/usercards/${user.username}`)
           .then((res) => {setCards(res.data.filter(get_selected));SetLoad(false);wait()});
       }, []);
 
@@ -120,6 +123,15 @@ export default function Battleground(props) {
           .then((res) => {setEnemies(res.data);SetLoad(false)});
       }, []);
 
+    async function atualiza_user(){
+      if (enemies.length === 0){
+        await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": 5,"win":1,"defeat":0});
+      }
+      else if (userCard.length === 0 ){
+        await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": -1,"win":0,"defeat":1});
+      }
+    }
+
     useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false)}else{setGame(true)}});
     
     const tela_final = <>
@@ -127,7 +139,7 @@ export default function Battleground(props) {
     {enemies.length === 0 ?
     (<h1 className="final-letra-vitoria">Vitória</h1>):(<h1 className="final-letra-derrota">Derrota</h1>) }
     <div className="battle-icon">
-        <button className="battle-button">
+        <button onClick={atualiza_user} className="battle-button">
             <Link to="/battle/" className="battle-link">
                 <span className="battle-appbutton">Continuar</span>
             </Link>
@@ -151,7 +163,7 @@ export default function Battleground(props) {
           <div className="battleground-card-container">
           {cards.map((card) => (
             userCard[0]!==card.id ? 
-            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) 
+            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 700);}} className="battleground-card" src={card.image}/></div></>) 
             : 
             (<><div className="ground-container-selected-user"><div class="bottomright-selected">{card.health}</div><img onClick={()=>{selectUser(card)}} className="battleground-card-user" src={card.image}/></div></>)
           ))}

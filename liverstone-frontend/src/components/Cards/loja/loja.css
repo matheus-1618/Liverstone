@@ -7,6 +7,25 @@
   font-family:fantasy;
 }
 
+.toast{
+  position: absolute;
+  top: 17%;
+  align-self: center;
+  left: 78%;
+  font-size: 25px;
+  font-family: 'HortaRegular';
+  padding: 6px;
+  transition: transform .6s ease-in-out;
+  animation: toast-in-right .7s;
+  background-color:#F1CF3B;
+  border-radius: 10px;
+}
+
+.toast:hover{
+  transform: scale(1.01);
+  color: red;
+}
+
 .loja-letra:hover{
   transform: scale(1.05);
   color: #F1CF3B;

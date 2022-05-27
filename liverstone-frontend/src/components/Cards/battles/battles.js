@@ -6,9 +6,12 @@ import {GiRelicBlade} from "react-icons/gi"
 import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 
 export default function Battle(props) {
     const [cards, setCards] = useState([]);
+    const { user, logoutUser } = useContext(AuthContext);
     const [load,SetLoad] = useState(true);
     const [selectedCards, setSelectedCards] = useState([]);
     function selectCard(id){
@@ -22,6 +25,7 @@ export default function Battle(props) {
             setSelectedCards(selectedCards => [...selectedCards, id])
         }
     }
+    
     const card_template = <>
     <div className="battle-container">
         <div className="battle-centered">Selecione três cartas para batalhar</div>
@@ -48,9 +52,10 @@ export default function Battle(props) {
     </>
     useEffect(() => {
         axios
-          .get("http://localhost:8000/attack2")
+          .get(`http://localhost:8000/usercards/${user.username}`)
           .then((res) => {setCards(res.data);SetLoad(false)});
       }, []);
+
   return (
     <main className="App">
       <Appbar/>
