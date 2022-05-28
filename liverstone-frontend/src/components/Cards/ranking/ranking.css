@@ -1,0 +1,110 @@
+.ranking-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking{
+    width: 100%;
+}
+
+.rank-container {
+    position: relative;
+    text-align: center;
+    width: 40%;
+    color: #F1CF3B;
+    transition-duration: 0.4s;
+  }
+
+  .rank-container:hover {
+    transform: scale(1.1);
+    color: #8652ff;
+  }
+
+  .ranking-center1 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 45px;
+    background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px black;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center2 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 35px;
+    background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px black;
+    top: 60%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center3 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 35px;
+    background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px black;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center4 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 35px;
+    background: -webkit-linear-gradient(#f5af19, #1C6FF8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px black;
+    top: 60%;
+    left: 74%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center5 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 28px;
+    color: #f5af19;
+    -webkit-text-stroke: 2px black; 
+    top: 45%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center6 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 28px;
+    color: #f5af19;
+    -webkit-text-stroke: 2px black; 
+    top: 45%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ranking-center7 {
+    position: absolute;
+    font-family: 'HortaRegular';
+    font-size: 28px;
+    color: #f5af19;
+    -webkit-text-stroke: 2px black; 
+    top: 45%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+  }

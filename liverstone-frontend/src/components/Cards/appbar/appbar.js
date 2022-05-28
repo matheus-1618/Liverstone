@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { GiExitDoor,GiRank3,GiBattleAxe,GiCoins,GiCardBurn,GiBattleGear } from 'react-icons/gi';
+import { GiExitDoor,GiRank3,GiBattleAxe,GiCoins,GiCardPick,GiBattleGear } from 'react-icons/gi';
 import {FaCoins} from 'react-icons/fa'
 import {BiLogOut} from 'react-icons/bi';
 import axios from "axios";
@@ -50,7 +50,7 @@ export default function Appbar(props) {
     <div className="icon">
         <button className="button">
         <Link to="/decks" className="link">
-            <span className="appbutton"><GiCardBurn />Deck </span>
+            <span className="appbutton"><GiCardPick />Deck </span>
         </Link>
         </button>
     </div>

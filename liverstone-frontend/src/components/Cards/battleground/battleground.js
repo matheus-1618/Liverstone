@@ -82,7 +82,15 @@ export default function Battleground(props) {
     }
 
     function bot(){
-      let randomEnemy = enemies[Math.floor(Math.random()*enemies.length)];
+      let randomEnemy;
+      if (enemies.length == 1){
+        randomEnemy = enemies.filter(e=>e.id===enemyCard[0])[0];
+      }
+      else{
+        let enemyOut = enemies.filter(e=>e.id!=enemyCard[0]);
+        randomEnemy = enemyOut[Math.floor(Math.random()*enemyOut.length)];
+      }
+
       let randomCard = cards[Math.floor(Math.random()*cards.length)];
       setTimeout(() => {
         setTexto("Turno de ataque do adversário")
@@ -127,19 +135,19 @@ export default function Battleground(props) {
       if (enemies.length === 0){
         await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": 5,"win":1,"defeat":0});
       }
-      else if (userCard.length === 0 ){
+      else {
         await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": -1,"win":0,"defeat":1});
       }
     }
 
-    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false)}else{setGame(true)}});
+    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false)} else{setGame(true)}});
     
     const tela_final = <>
     <div className="alinhamentos">
     {enemies.length === 0 ?
     (<h1 className="final-letra-vitoria">Vitória</h1>):(<h1 className="final-letra-derrota">Derrota</h1>) }
     <div className="battle-icon">
-        <button onClick={atualiza_user} className="battle-button">
+        <button onClick={()=>{atualiza_user();window.location.reload()}} className="battle-button">
             <Link to="/battle/" className="battle-link">
                 <span className="battle-appbutton">Continuar</span>
             </Link>
@@ -163,7 +171,7 @@ export default function Battleground(props) {
           <div className="battleground-card-container">
           {cards.map((card) => (
             userCard[0]!==card.id ? 
-            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 700);}} className="battleground-card" src={card.image}/></div></>) 
+            (<><div className="ground-container"><div class="bottomright">{card.health}</div><img onClick={()=>{selectUser(card); setTimeout(() => {setuserTurn(true)}, 600);}} className="battleground-card" src={card.image}/></div></>) 
             : 
             (<><div className="ground-container-selected-user"><div class="bottomright-selected">{card.health}</div><img onClick={()=>{selectUser(card)}} className="battleground-card-user" src={card.image}/></div></>)
           ))}

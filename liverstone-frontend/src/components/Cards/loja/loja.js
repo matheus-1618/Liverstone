@@ -9,7 +9,6 @@ import axios from "axios";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 
-
 export default function Loja(props) {
   const [gif,setGif] = useState(false);
   const [cards, setCards] = useState([]);
@@ -17,14 +16,14 @@ export default function Loja(props) {
   const { user, logoutUser } = useContext(AuthContext);
   const [usuario,setUsuario] = useState([]);
   const [toast,setToast] = useState(false);
-  const [cost,setCost] = useState(0);
+  const [raridade,setRaridade] = useState('');
   let coins = usuario.money;
 
   useEffect(()=>{
         axios
         .get(`http://localhost:8000/usuarios/${user.username}`)
         .then((res) => {setUsuario(res.data)})
-    },[coins]);
+    },[]);
 
   useEffect(()=>{
      if (toast){
@@ -32,8 +31,17 @@ export default function Loja(props) {
      }
   },[toast]);
 
-  async function atualiza_user(){
-    await axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":cost});
+
+  function atualiza_user(){
+    if (raridade==="comum"){
+      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-15});
+    }
+    else if (raridade==="especial"){
+      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-40});
+    }
+    else if (raridade==="raro"){
+      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-100});
+    }
   }
 
 
@@ -45,7 +53,7 @@ export default function Loja(props) {
     }, 6000);
   }
 
-  async function get_card(raridade){
+  function get_card(raridade){
     if (raridade==="comum" && usuario.money<15 ){
       setTimeout(()=>{setToast(true)},200);
     }
@@ -56,10 +64,9 @@ export default function Loja(props) {
       setTimeout(()=>{setToast(true)},200);
     }
     else{
-      await axios
+      axios
       .get(`http://localhost:8000/${raridade}`)
       .then((res) => {setCards(res.data);wait()});
-      atualiza_user();
     }
   }
 
@@ -76,15 +83,15 @@ export default function Loja(props) {
         <img className="loja" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/L5HF4DAYACAZ1561588341680.gif"/>
       </div>
       <div className="pack-container">
-        <div onClick={()=>{get_card('comum');setCost(-15)}} className="market">
+        <div onClick={()=>{get_card('comum');setRaridade('comum')}} className="market">
             <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 15  <br></br><GiRank1 size={30}/>Comum</h1>
             <img className="packs1" src="../../comum.gif"/>
         </div>
-        <div onClick={()=>{get_card('especial');setCost(-40)}} className="market">
+        <div onClick={()=>{get_card('especial');setRaridade('especial')}} className="market">
             <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 40 <br></br><GiRank2 size={30}/>Especial</h1>
             <img className="packs2" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/RHJJZHT0U2001559355124536.gif"/>
         </div>
-        <div onClick={()=>{get_card('raro');setCost(-100)}}  className="market">
+        <div onClick={()=>{get_card('raro');setRaridade('raro')}}  className="market">
             <h1 className="label"><FaCoins stroke="black" stroke-width={5} size={30} /> 100 <br></br><GiRank3 size={30}/>Raro</h1>
             <img className="packs3" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/8W9RXIVQ7C471561590038866.gif"/>
         </div>
@@ -96,7 +103,7 @@ export default function Loja(props) {
   <Appbar/>
   <h1 className="loja-letra">Nova carta adquirida</h1>
   <div className="loja-icon">
-        <button onClick={()=>{setShowcard(false)}} className="loja-button">
+        <button onClick={()=>{setShowcard(false);atualiza_user();window.location.reload()}} className="loja-button">
                 <span className="loja-appbutton"><GiShieldBash/>Continuar</span>
         </button>
     </div>

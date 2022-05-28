@@ -4,10 +4,13 @@ import Appbar from "../appbar/appbar";
 import Load from "../loadspinner/loadspinner";
 import { useState,useEffect } from "react";
 import axios from "axios";
-
+import { useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 
 export default function Decks(props) {
+    const { user, logoutUser } = useContext(AuthContext);
     const [cards, setCards] = useState([]);
+    const [userCards, setUsercards] = useState([]);
     const [load,SetLoad] = useState(true);
     const card_template = <>
     <div className="loja-container">
@@ -16,12 +19,19 @@ export default function Decks(props) {
       </div>
     <div className="card-container">
     {cards.map((card) => (
-        card.health>4 ? 
+        userCards.includes(card.id) ? 
         (<img className="cards" src={card.image}/>)
         : (<img className="cards-no" src={card.image}/>)
     ))}
     </div>
     </>
+
+    useEffect(() => {
+      axios
+        .get(`http://localhost:8000/usercards/${user.username}`)
+        .then((res) => {setUsercards(res.data.map((card)=> (card.card_id)));SetLoad(false)});
+    }, []);
+
     useEffect(() => {
         axios
           .get("http://localhost:8000/all")
