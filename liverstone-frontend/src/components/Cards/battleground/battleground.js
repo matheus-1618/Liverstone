@@ -7,6 +7,11 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
+import useSound from 'use-sound';
+import attacksound from "../../../sounds/attack.mp3"
+import enemiesound from "../../../sounds/enemies.mp3"
+import victory from "../../../sounds/win.mp3"
+import lose from "../../../sounds/lost.mp3"
 
 export default function Battleground(props) {
     const { user, logoutUser } = useContext(AuthContext);
@@ -22,6 +27,10 @@ export default function Battleground(props) {
     const [UserTurn,setuserTurn] = useState(false);
     const [attack,setAttack] = useState(false);
     const [gif,setGif] = useState(true);
+    const [play, { stop }] = useSound(attacksound);
+    const [playenemie, { stopenemie }] = useSound(enemiesound);
+    const [win, { stopwon }] = useSound(victory);
+    const [lost, { stoplost }] = useSound(lose);
     let { ids } = useParams();
     let cardsId = ids.split("&")
 
@@ -51,6 +60,7 @@ export default function Battleground(props) {
       setEnemyCard([]);
     }
       else{
+        play();
         setAttack(false);
         setEnemyCard(enemyCard => [...enemyCard, card.id]);
         card.health =  card.health -  userAttack;
@@ -64,7 +74,7 @@ export default function Battleground(props) {
 
     const wait = () => {
       setTimeout(() => {
-        setGif(false)
+        setGif(false);
       }, 2500);
     };
 
@@ -90,7 +100,6 @@ export default function Battleground(props) {
         let enemyOut = enemies.filter(e=>e.id!=enemyCard[0]);
         randomEnemy = enemyOut[Math.floor(Math.random()*enemyOut.length)];
       }
-
       let randomCard = cards[Math.floor(Math.random()*cards.length)];
       setTimeout(() => {
         setTexto("Turno de ataque do adversário")
@@ -99,6 +108,7 @@ export default function Battleground(props) {
         setEnemyCard([randomEnemy.id])
       }, 2000);
       setTimeout(() => {
+        playenemie();
         setUserCard([randomCard.id])
         let indexEnemy = enemies.indexOf(randomEnemy);
         let indexCard = cards.indexOf(randomCard);
@@ -113,7 +123,7 @@ export default function Battleground(props) {
       setuserTurn(false);
       sleep(4000);
       setTimeout(() => {
-        setTexto("Seu turno de ataque")
+        setTexto("Seu turno de ataque");
       }, 5000);
     }
  
@@ -140,7 +150,22 @@ export default function Battleground(props) {
       }
     }
 
-    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false)} else{setGame(true)}});
+    function finalMusic(){
+      if (!gif){
+        if (enemies.length === 0){
+          win();
+        }
+        else if (cards.length === 0){
+          lost();
+        }
+        else{
+          stopwon();
+          stoplost();
+        }
+      }
+    }
+
+    useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false);finalMusic()} else{setGame(true)}});
     
     const tela_final = <>
     <div className="alinhamentos">

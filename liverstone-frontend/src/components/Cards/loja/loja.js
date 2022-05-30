@@ -8,6 +8,8 @@ import {FaCoins} from 'react-icons/fa'
 import axios from "axios";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
+import useSound from 'use-sound';
+import packoppening from "../../../sounds/pack.mp3"
 
 export default function Loja(props) {
   const [gif,setGif] = useState(false);
@@ -17,6 +19,7 @@ export default function Loja(props) {
   const [usuario,setUsuario] = useState([]);
   const [toast,setToast] = useState(false);
   const [raridade,setRaridade] = useState('');
+  const [play, { stop }] = useSound(packoppening,{volume: 0.5 });
   let coins = usuario.money;
 
   useEffect(()=>{
@@ -64,6 +67,7 @@ export default function Loja(props) {
       setTimeout(()=>{setToast(true)},200);
     }
     else{
+      play();
       axios
       .get(`http://localhost:8000/${raridade}`)
       .then((res) => {setCards(res.data);wait()});

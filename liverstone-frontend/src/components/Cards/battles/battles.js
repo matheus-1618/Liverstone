@@ -8,12 +8,19 @@ import { useState,useEffect } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
+import useSound from 'use-sound';
+import battlesound from "../../../sounds/battle.mp3"
+import cardsound from "../../../sounds/select.mp3"
+
 
 export default function Battle(props) {
     const [cards, setCards] = useState([]);
     const { user, logoutUser } = useContext(AuthContext);
     const [load,SetLoad] = useState(true);
     const [selectedCards, setSelectedCards] = useState([]);
+    const [play, { stop }] = useSound(battlesound,{volume: 0.1 });
+    const [selected, { stopSelected }] = useSound(cardsound);
+
     function selectCard(id){
         if (selectedCards.length==3){
             setSelectedCards(selectedCards.slice(1))
@@ -22,6 +29,7 @@ export default function Battle(props) {
             setSelectedCards(selectedCards.filter(item => item !== id))
         }
         else{
+            selected();
             setSelectedCards(selectedCards => [...selectedCards, id])
         }
     }
@@ -36,7 +44,7 @@ export default function Battle(props) {
     <h1 className="battle-letra">Nenhuma carta selecionada</h1>}
     {selectedCards.length==3 ? 
     (<div className="battle-icon">
-        <button className="battle-button">
+        <button  onClick={()=>play()} className="battle-button">
             <Link to={`/battle/${selectedCards.join("&")}`} className="battle-link">
                 <span className="battle-appbutton"><GiRelicBlade/>Batalhar</span>
             </Link>

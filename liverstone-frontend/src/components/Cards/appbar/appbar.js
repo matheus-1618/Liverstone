@@ -70,7 +70,7 @@ export default function Appbar(props) {
     </div>
     
     <div className="icon">
-        <button className="button" onClick={logoutUser}>
+        <button className="button" onClick={()=>{logoutUser()}}>
         <Link to="/login" className="link">
             <span className="appbutton"><GiExitDoor/>Logout </span>
         </Link>
