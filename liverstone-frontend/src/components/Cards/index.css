@@ -64,6 +64,7 @@
 
 .index-container:hover {
 color: #8652ff;
+transform: scale(1.05);
 }
 
 .index-center {
