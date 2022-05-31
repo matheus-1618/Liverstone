@@ -90,6 +90,6 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    background-image: url('https://www.hdwallpapers.in/download/hearthstone_2020_4k_hd_hearthstone_heroes_of_warcraft-3840x2160.jpg');
+    background-image: url('../../public/hearth.gif');
     background-size:cover;
   }
