@@ -17,7 +17,7 @@ export default function Ranking(props) {
 
   useEffect(()=>{
       axios
-      .get(`http://localhost:8000/usuarios`)
+      .get(`https://secure-reef-15187.herokuapp.com/usuarios`)
       .then((res) => {setUsuarios(res.data);SetLoad(false)})
     },[teste]);
 

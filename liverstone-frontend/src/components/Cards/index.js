@@ -17,7 +17,7 @@ export default function Home(props) {
 
   useEffect(()=>{
       axios
-      .get(`http://localhost:8000/usuarios/${user.username}`)
+      .get(`https://secure-reef-15187.herokuapp.com/usuarios/${user.username}`)
       .then((res) => {setUsuario(res.data);SetLoad(false)})
     },[teste]);
   

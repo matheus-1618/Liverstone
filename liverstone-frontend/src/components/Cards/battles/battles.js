@@ -60,7 +60,7 @@ export default function Battle(props) {
     </>
     useEffect(() => {
         axios
-          .get(`http://localhost:8000/usercards/${user.username}`)
+          .get(`https://secure-reef-15187.herokuapp.com/usercards/${user.username}`)
           .then((res) => {setCards(res.data);SetLoad(false)});
       }, []);
 

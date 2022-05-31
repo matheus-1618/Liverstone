@@ -131,22 +131,22 @@ export default function Battleground(props) {
 
     useEffect(() => {
         axios
-          .get(`http://localhost:8000/usercards/${user.username}`)
+          .get(`https://secure-reef-15187.herokuapp.com/usercards/${user.username}`)
           .then((res) => {setCards(res.data.filter(get_selected));SetLoad(false);wait()});
       }, []);
 
     useEffect(() => {
         axios
-          .get("http://localhost:8000/random")
+          .get("https://secure-reef-15187.herokuapp.com/random")
           .then((res) => {setEnemies(res.data);SetLoad(false)});
       }, []);
 
     async function atualiza_user(){
       if (enemies.length === 0){
-        await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": 5,"win":1,"defeat":0});
+        await axios.post(`https://secure-reef-15187.herokuapp.com/after_battle/${user.username}`, {"money": 5,"win":1,"defeat":0});
       }
       else {
-        await axios.post(`http://localhost:8000/after_battle/${user.username}`, {"money": -1,"win":0,"defeat":1});
+        await axios.post(`https://secure-reef-15187.herokuapp.com/after_battle/${user.username}`, {"money": -1,"win":0,"defeat":1});
       }
     }
 

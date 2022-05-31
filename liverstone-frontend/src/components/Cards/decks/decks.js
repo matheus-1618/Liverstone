@@ -28,13 +28,13 @@ export default function Decks(props) {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:8000/usercards/${user.username}`)
+        .get(`https://secure-reef-15187.herokuapp.com/usercards/${user.username}`)
         .then((res) => {setUsercards(res.data.map((card)=> (card.card_id)));SetLoad(false)});
     }, []);
 
     useEffect(() => {
         axios
-          .get("http://localhost:8000/all")
+          .get("https://secure-reef-15187.herokuapp.com/all")
           .then((res) => {setCards(res.data);SetLoad(false)});
       }, []);
   return (

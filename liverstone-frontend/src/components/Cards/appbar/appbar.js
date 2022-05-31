@@ -16,7 +16,7 @@ export default function Appbar(props) {
   useEffect(()=>{
     // setTimeout(() => {
         axios
-        .get(`http://localhost:8000/usuarios/${user.username}`)
+        .get(`https://secure-reef-15187.herokuapp.com/usuarios/${user.username}`)
         .then((res) => {setUsuario(res.data)})
     },[coins]);
     // }, 20000);

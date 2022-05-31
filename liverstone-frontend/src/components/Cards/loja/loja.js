@@ -24,7 +24,7 @@ export default function Loja(props) {
 
   useEffect(()=>{
         axios
-        .get(`http://localhost:8000/usuarios/${user.username}`)
+        .get(`https://secure-reef-15187.herokuapp.com/usuarios/${user.username}`)
         .then((res) => {setUsuario(res.data)})
     },[]);
 
@@ -37,13 +37,13 @@ export default function Loja(props) {
 
   function atualiza_user(){
     if (raridade==="comum"){
-      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-15});
+      axios.post(`https://secure-reef-15187.herokuapp.com/after_pack/${user.username}`, {"id": cards.id,"money":-15});
     }
     else if (raridade==="especial"){
-      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-40});
+      axios.post(`https://secure-reef-15187.herokuapp.com/after_pack/${user.username}`, {"id": cards.id,"money":-40});
     }
     else if (raridade==="raro"){
-      axios.post(`http://localhost:8000/after_pack/${user.username}`, {"id": cards.id,"money":-100});
+      axios.post(`https://secure-reef-15187.herokuapp.com/after_pack/${user.username}`, {"id": cards.id,"money":-100});
     }
   }
 
@@ -69,7 +69,7 @@ export default function Loja(props) {
     else{
       play();
       axios
-      .get(`http://localhost:8000/${raridade}`)
+      .get(`https://secure-reef-15187.herokuapp.com/${raridade}`)
       .then((res) => {setCards(res.data);wait()});
     }
   }
