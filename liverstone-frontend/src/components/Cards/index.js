@@ -20,7 +20,6 @@ export default function Home(props) {
       .get(`https://secure-reef-15187.herokuapp.com/usuarios/${user.username}`)
       .then((res) => {setUsuario(res.data);SetLoad(false)})
     },[teste]);
-  
     const index_template=<>
     <div class="index-container">
         {user && <div className="index-center">{user.username}'s stats</div>}
