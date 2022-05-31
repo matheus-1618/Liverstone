@@ -15,14 +15,14 @@ import cardsound from "../../../sounds/select.mp3"
 
 export default function Battle(props) {
     const [cards, setCards] = useState([]);
-    const { user, logoutUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [load,SetLoad] = useState(true);
     const [selectedCards, setSelectedCards] = useState([]);
-    const [play, { stop }] = useSound(battlesound,{volume: 0.1 });
-    const [selected, { stopSelected }] = useSound(cardsound);
+    const [play] = useSound(battlesound,{volume: 0.1 });
+    const [selected] = useSound(cardsound);
 
     function selectCard(id){
-        if (selectedCards.length==3){
+        if (selectedCards.length === 3){
             setSelectedCards(selectedCards.slice(1))
         }
         if (selectedCards.includes(id)){
@@ -37,12 +37,12 @@ export default function Battle(props) {
     const card_template = <>
     <div className="battle-container">
         <div className="battle-centered">Selecione três cartas para batalhar</div>
-        <img className="battle" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/o1/O1AOL7NX48GZ1554165848774.png"/>
+        <img alt="teste" className="battle" src="https://bnetcmsus-a.akamaihd.net/cms/gallery/o1/O1AOL7NX48GZ1554165848774.png"/>
     </div>
     {selectedCards.length ? 
     (<h1 className="battle-letra">{selectedCards.length} cartas selecionadas</h1>):
     <h1 className="battle-letra">Nenhuma carta selecionada</h1>}
-    {selectedCards.length==3 ? 
+    {selectedCards.length  === 3 ? 
     (<div className="battle-icon">
         <button  onClick={()=>play()} className="battle-button">
             <Link to={`/battle/${selectedCards.join("&")}`} className="battle-link">
@@ -53,8 +53,8 @@ export default function Battle(props) {
     <div className="card-container">
     {cards.map((card) => (
         selectedCards.includes(card.id) ? 
-        (<img onClick={()=>selectCard(card.id)} className="battle-cards" src={card.image}/>)
-        : (<img onClick={()=>selectCard(card.id)} className="battle-cards-no" src={card.image}/>)
+        (<img alt="teste" onClick={()=>selectCard(card.id)} className="battle-cards" src={card.image}/>)
+        : (<img  alt="teste" onClick={()=>selectCard(card.id)} className="battle-cards-no" src={card.image}/>)
     ))}
     </div>
     </>
@@ -62,7 +62,7 @@ export default function Battle(props) {
         axios
           .get(`https://secure-reef-15187.herokuapp.com/usercards/${user.username}`)
           .then((res) => {setCards(res.data);SetLoad(false)});
-      }, []);
+      }, [user]);
 
   return (
     <main className="App">

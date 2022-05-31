@@ -19,7 +19,7 @@ function Register() {
     <main className="App-login">
       <form onSubmit={handleSubmit}>
         <div className="login">
-        <img className="login-image" src="Liverstone.png"/>
+        <img alt="image" className="login-image" src="Liverstone.png"/>
         <div className="form-card">
         <h1><RiUserFill/></h1>
           <input

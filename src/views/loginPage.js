@@ -6,11 +6,8 @@ import AuthContext from "../context/AuthContext";
 import './loginPage.css'
 
 const LoginPage = () => {
-  // const navigate = Navigate();
   const { loginUser } = useContext(AuthContext);
-  // function goRegister(){
-  //   navigate('/register');
-  // }
+
   const handleSubmit = e => {
     e.preventDefault();
     const username = e.target.username.value;
@@ -22,7 +19,7 @@ const LoginPage = () => {
     <main className="App-login">
       <form onSubmit={handleSubmit}>
         <div className="login">
-        <img className="login-image" src="Liverstone.png"/>
+        <img alt="image" className="login-image" src="Liverstone.png"/>
         <div className="form-card">
           <h1><RiUserFill/></h1>
           <input  required className="form-card-title"  type="text" id="username" placeholder="Nome de usuário" />

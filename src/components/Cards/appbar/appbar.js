@@ -2,29 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { GiExitDoor,GiRank3,GiBattleAxe,GiCoins,GiCardPick,GiBattleGear } from 'react-icons/gi';
 import {FaCoins} from 'react-icons/fa'
-import {BiLogOut} from 'react-icons/bi';
 import axios from "axios";
 import "./appbar.css";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext";
 
 export default function Appbar(props) {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [usuario,setUsuario] = useState([]);
-  let coins = usuario.money;
 
   useEffect(()=>{
-    // setTimeout(() => {
         axios
         .get(`https://secure-reef-15187.herokuapp.com/usuarios/${user.username}`)
         .then((res) => {setUsuario(res.data)})
-    },[coins]);
-    // }, 20000);
+    },[user]);
+
   
   return (
     <div className="appbar">
     <Link to="/" className="link">
-        <img src="/Liverstpne.gif" />
+        <img alt="Liverstone" src="/Liverstpne.gif" />
     </Link>
 
     <a className="coins-bar">
@@ -70,7 +67,7 @@ export default function Appbar(props) {
     </div>
     
     <div className="icon">
-        <button className="button" onClick={()=>{logoutUser()}}>
+        <button className="button">
         <Link to="/login" className="link">
             <span className="appbutton"><GiExitDoor/>Logout </span>
         </Link>

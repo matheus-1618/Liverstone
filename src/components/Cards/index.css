@@ -75,7 +75,7 @@ transform: scale(1.05);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 2px black;
-  top: 20%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -14,7 +14,7 @@ import victory from "../../../sounds/win.mp3"
 import lose from "../../../sounds/lost.mp3"
 
 export default function Battleground(props) {
-    const { user, logoutUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [game,setGame] = useState(true);
     const [cards, setCards] = useState([]);
     const [enemies, setEnemies] = useState([]);
@@ -27,8 +27,8 @@ export default function Battleground(props) {
     const [UserTurn,setuserTurn] = useState(false);
     const [attack,setAttack] = useState(false);
     const [gif,setGif] = useState(true);
-    const [play, { stop }] = useSound(attacksound);
-    const [playenemie, { stopenemie }] = useSound(enemiesound);
+    const [play] = useSound(attacksound);
+    const [playenemie] = useSound(enemiesound);
     const [win, { stopwon }] = useSound(victory);
     const [lost, { stoplost }] = useSound(lose);
     let { ids } = useParams();
@@ -164,7 +164,6 @@ export default function Battleground(props) {
         }
       }
     }
-
     useEffect(()=>  {if (!load && (enemies.length === 0 || cards.length === 0)){setGame(false);finalMusic()} else{setGame(true)}});
     
     const tela_final = <>
